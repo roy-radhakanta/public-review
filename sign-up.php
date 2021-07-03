@@ -18,7 +18,7 @@
                 <input type="text" name="useremailaddress" id="useremail" placeholder="enter your email address">
                 <input type="password" name="createpassword" id="createpassword" placeholder="******">
                 <div class="loing__form--button">
-                <button class="button">Sign Up</button>
+                <button class="button" id="signUp">Sign Up</button>
             </div>
             </form>
             <a href="./" class="anchor muted-text">already sign up ? <span class="stand-out">sign in</span> </a>
@@ -26,5 +26,5 @@
     </section>
 
 
-
+<script src="js/signup.js"></script>
 <?php include "include/footer.php";?>
