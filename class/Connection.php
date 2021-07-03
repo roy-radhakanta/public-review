@@ -4,7 +4,7 @@
 	{
 		public static function dbConnect(){
 			$db_host = "localhost";
-			$db_name = "portfolio_rk";
+			$db_name = "public_review";
 			$db_user = "root";
 			$db_pass = "";
 

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login :: Public Review</title>
-    <link rel="stylesheet" href="css/style.css">
-   
-</head>
+<?php include "include/header.php";?>
 <body class="black-bg-body">
 
 
@@ -28,7 +19,7 @@
                 <button class="button">Sign In</button>
             </div>
             </form>
-            <a href="sign-up.html" class="anchor muted-text">don't have account ? <span class="stand-out">sign up</span> </a>
+            <a href="sign-up.php" class="anchor muted-text">don't have account ? <span class="stand-out">sign up</span> </a>
             
         </div>
     </section>
@@ -37,6 +28,4 @@
 
 
 
-    <script src="js/main.js"></script>
-</body>
-</html>
+    <?php include "include/footer.php";?>

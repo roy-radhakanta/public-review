@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed :: Public Review</title>
-    <link rel="stylesheet" href="css/style.css">
-    
-</head>
+<?php include "include/header.php";?>
 
 <body class="black-bg-body">
 
@@ -60,7 +50,7 @@
                             <div class="bubble__wrap">
                                 <a href="#">
                                 <div class="bubble__job">
-                                    <?xml version="1.0" encoding="windows-1252"?>
+                                   
                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 395.973 395.973" style="enable-background:new 0 0 395.973 395.973;"
@@ -395,7 +385,4 @@
 
 
 
-    <script src="js/main.js"></script>
-</body>
-
-</html>
+    <?php include "include/footer.php";?>
