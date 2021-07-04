@@ -210,6 +210,14 @@ button.button {
     background: var(--secondary-color);
     color: var(--white);
 }
+.bg-primary{
+    background: var(--secondary-color)!important;
+}
+.pointer{
+    cursor: pointer;
+}
+.danger-color{color: var(--danger);}
+.hooray-color{color: var(--pass);}
 /* -------- END:: COMPONENTS ---------- */
 
 /* --------- START:: FEEDBACK ------- */
@@ -423,5 +431,41 @@ button.button {
 	background: var(--alpha-black);
 	border-radius: var(--border-radius);
 	padding: .5rem 1rem;
+}
+.modal__x {
+    display: none;
+	position: fixed;
+	top: 2rem;
+	right: 2rem;
+	width: 20%;
+	
+}
+.drop__message {
+	width: 100%;
+	background: var(--opac-black);
+	padding: .4rem 1rem;
+	border-radius: var(--border-radius);
+	transition: all 1s linear;
+	animation: fallIn .8s linear;
+	margin-bottom: 1rem;
+	font-size: .8rem;
+}
+.modal-cross {
+	height: 1.2rem;
+	fill: var(--danger);
+}
+.modal-success{
+    height: 1.2rem;
+	fill: var(--pass);
+}
+
+@keyframes fallIn {
+    0%{
+        transform: translateY(-50rem);
+    }
+ 
+    100%{
+        transform: translateY(2rem);
+    }
 }
 /* --------- END:: FEEDBACK ------- */

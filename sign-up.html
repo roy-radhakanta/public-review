@@ -1,7 +1,14 @@
-<?php include "include/header.php";?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration :: Public Review</title>
+    <link rel="stylesheet" href="css/style.css">
+   
+</head>
 <body class="black-bg-body">
-
-
 
     <section class="login__form--container flex align-items-center justify-content-center h-100vh ">
         <div class="login__form  w-40 text-center">
@@ -12,19 +19,27 @@
                 <h1>public review</h1>
                 <p class="muted-text">register yourself to comment on your favourite topic</p>
             </div>
-            <form method="post" class="w-100">
+            <form method="POST" class="w-100" id="formRegistration">
                 <input type="text" name="username" id="username" placeholder="enter your full name">
                 <input type="text" name="userpublicname" id="userpublicname" placeholder="enter your public name / userid">
                 <input type="text" name="useremailaddress" id="useremail" placeholder="enter your email address">
                 <input type="password" name="createpassword" id="createpassword" placeholder="******">
                 <div class="loing__form--button">
-                <button class="button" id="signUp">Sign Up</button>
+                <input class="bg-primary pointer" id="signUp" type="submit" value="Sign Up">
             </div>
             </form>
             <a href="./" class="anchor muted-text">already sign up ? <span class="stand-out">sign in</span> </a>
         </div>
     </section>
 
+    <div class="modal__x">
+        <div class="modal__x--body">
+           
+        </div>
+    </div>
+
+    </body>
+
 
 <script src="js/signup.js"></script>
-<?php include "include/footer.php";?>
+</html>
