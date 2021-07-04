@@ -216,6 +216,9 @@ button.button {
 .pointer{
     cursor: pointer;
 }
+.cursor-disable{
+    cursor:not-allowed;
+}
 .danger-color{color: var(--danger);}
 .hooray-color{color: var(--pass);}
 /* -------- END:: COMPONENTS ---------- */
@@ -458,7 +461,12 @@ button.button {
     height: 1.2rem;
 	fill: var(--pass);
 }
-
+.processing {
+	position: absolute;
+	bottom: -5px;
+	left: 162px;
+    display: none;
+}
 @keyframes fallIn {
     0%{
         transform: translateY(-50rem);

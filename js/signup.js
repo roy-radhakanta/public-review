@@ -17,6 +17,12 @@ function dataSendDb(e){
     const sendData = `fullname=${userFullName}&publicname=${userPublicName}&email=${userEmail}&password=${userPassword}`;
 
     xhr = new XMLHttpRequest();
+
+    xhr.onprogress = function(){
+        document.getElementById('signUp').value = '';
+        document.querySelector('.processing').style.display = 'block';
+    };
+
     xhr.onload = function(){
         let responseMsg = null;
         try {
