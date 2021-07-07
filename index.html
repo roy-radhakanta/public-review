@@ -21,9 +21,9 @@
                 <h1>public review</h1>
                 <p class="muted-text">sign in to comment on your favourite topic</p>
             </div>
-            <form method="post" class="w-100">
-                <input type="text" name="userid" id="userid" placeholder="enter your user id">
-                <input type="password" name="password" id="password" placeholder="******">
+            <form method="post" class="w-100 signin__form" id="signIn">
+                <input type="email" name="userid" id="userid" class="signin_id" placeholder="enter your user id">
+                <input type="password" name="password" id="password" class="signin_cres" placeholder="******">
                 <div class="loing__form--button">
                 <input class="bg-primary cursor-disable" type="submit" value="Sign In">
             </div>
@@ -33,6 +33,11 @@
         </div>
     </section>
 
-
+    <div class="modal__x">
+        <div class="modal__x--body">
+           
+        </div>
+    </div>
     </body>
+    <script src="js/signin.js"></script>
 </html>

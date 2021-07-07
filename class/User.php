@@ -12,13 +12,11 @@ class User{
     public function registerUser($conn){
         $sql = "INSERT INTO user_registration(user_fullname, user_name, email_address, password, status) VALUES(:user, :pubname, :email, :password, :status)";
         $stmt = $conn->prepare($sql);
-        
         $stmt->bindValue(':user', $this->user_fullname, PDO::PARAM_STR);
         $stmt->bindValue(':pubname', $this->user_name, PDO::PARAM_STR);
         $stmt->bindValue(':email', $this->email_address, PDO::PARAM_STR);
         $stmt->bindValue(':password', $this->password, PDO::PARAM_STR);
         $stmt->bindValue(':status', $this->status, PDO::PARAM_STR);
-    
         if($stmt->execute()){
             $this->id = $conn->lastInsertId();
 			return true;
@@ -26,6 +24,24 @@ class User{
             return false;
         }
     }
+
+    public static function checkLogin($conn, $userEmail, $userPass){
+        $sql = "SELECT * FROM user_registration WHERE email_address=:email";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':email', $userEmail, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $stmt->execute();
+        $account = $stmt->fetch();
+        if ($account) {
+            if($account->password === $userPass){
+                $_SESSION['email'] = $account->email_address;
+                return true;
+            }
+        }else{
+            return false;
+        }       
+    }
+
 }
 
 ?>

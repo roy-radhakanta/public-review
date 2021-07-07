@@ -153,6 +153,9 @@ img{
     color: var(--text-muted);
 }
 .pos-rel{position: relative;}
+.processing.active {
+    display: block;
+}
 /* -------------- START:: COMPONENTS ---------- */
 
 button.button {

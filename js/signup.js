@@ -20,7 +20,7 @@ function dataSendDb(e){
 
     xhr.onprogress = function(){
         document.getElementById('signUp').value = '';
-        document.querySelector('.processing').style.display = 'block';
+        document.querySelector('.processing').classList.add("active");
     };
 
     xhr.onload = function(){
@@ -34,6 +34,9 @@ function dataSendDb(e){
         if (responseMsg) {
             handleResponse(responseMsg);
         }
+
+        document.getElementById('signUp').value = 'Sign Up';
+        document.querySelector('.processing').classList.remove("active");
         
     }
     xhr.open('POST', 'registration-form-process.php', true);
@@ -64,13 +67,12 @@ function handleResponse(r){
             while (parent.firstChild) {
                 parent.removeChild(parent.firstChild);
               }
-             
+              
             document.querySelector('.modal__x').style.display = 'none';
-            if (msg === 'Registration Complete') {
+           
+            if (mg === 'Registration Complete') {
                 location.href = './';
             }
         }, 3000, msg);
 });
-    
-
 }
