@@ -42,6 +42,16 @@ class User{
         }       
     }
 
+    public static function userProfileData($conn, $userid){
+        $sql = "SELECT * FROM user_registration WHERE email_address = :userid LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':userid', $userid, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        if($stmt->execute()){
+            return $stmt->fetch();
+        }
+    }
+
 }
 
 ?>

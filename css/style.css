@@ -7,7 +7,7 @@
     --bg-gray: rgb(226, 226, 226);
     --whiteish: #f7f7f7;
     --white: #fff;
-    --opac-black: #2a292e;
+    --opac-black: #2a2830;
     --alpha-black: #44414891;
     --danger: #f73131;
     --pass: #019b3d;
@@ -16,6 +16,7 @@
     --text-muted: #7b7b7b;
 
     --border-radius: .5rem;
+    --border-color: #39383a;
 
     --background-body: #19181e;
 
@@ -224,6 +225,7 @@ button.button {
 }
 .danger-color{color: var(--danger);}
 .hooray-color{color: var(--pass);}
+.m-auto{margin-left: auto; margin-right: auto;}
 /* -------- END:: COMPONENTS ---------- */
 
 /* --------- START:: FEEDBACK ------- */
@@ -381,6 +383,7 @@ button.button {
     background: var(--opac-black);
     padding: 2%;
     border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
 }
 .feed__block:not(:first-child){
     margin-top: var(--big-margin);
@@ -470,6 +473,65 @@ button.button {
 	left: 162px;
     display: none;
 }
+.popup__xml {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)  scale(1.3);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+	background: #3e3c44ec;
+	border-radius: var(--border-radius);
+	padding: 1rem;
+	color: #fff;
+	backdrop-filter: blur( 20.0px );
+	-webkit-backdrop-filter: blur( 20.0px );
+   
+}
+
+.popup__xml--head {
+    border-bottom: 1px dashed #dcdcdc40;
+    padding-bottom: 2%;
+}
+.popup__xml--head-heading {
+    text-transform: uppercase;
+    font-size: 19px;
+    font-weight: 400;
+}
+.popup__xml--body textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #dcdcdc42;
+    margin-top: 4%;
+    border-radius: var(--border-radius);
+    padding: 2%;
+    color: var(--white);
+}
+.popup__xml--body textarea:focus-visible{
+    outline: none;
+}
+
+.cross {
+	width: 2rem;
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	background: var(--opac-black);
+	height: 2rem;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    cursor: pointer;
+}
+.cross img{
+    width: 1rem;
+}
+.show{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 @keyframes fallIn {
     0%{
         transform: translateY(-50rem);
@@ -480,3 +542,11 @@ button.button {
     }
 }
 /* --------- END:: FEEDBACK ------- */
+
+/* ------------ START:: PROFILE -------- */
+.profile__section  {
+        padding: 0% 3%;
+        border-radius: var(--border-radius);
+        background-color: var(--opac-black);
+}
+/* ------------ END:: PROFILE -------- */

@@ -50,7 +50,9 @@ const ajax = (function(u){
         xhr.send(credential);
     }
     let handleResult = function(response){
+        
         let objMsg = response;
+        
         let messages = objMsg.message;
         document.querySelector('.modal__x').style.display = 'block';
         messages.forEach((msg)=>{
