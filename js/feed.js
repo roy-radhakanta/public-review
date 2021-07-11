@@ -15,8 +15,7 @@ const ui = (function(){
 
 
 const userCredentialControl = (function(){
-    let cred = sessionStorage.getItem('setlog');
-       
+    let cred = sessionStorage.getItem('setlog');   
         return {
             checkAuth: function(){
                 return cred;

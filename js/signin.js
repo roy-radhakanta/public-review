@@ -4,7 +4,8 @@ var ui = (function(){
         email: '.signin_id',
         passLabel: '.signin_cres',
         modal: '.modal__x',
-        modalBody: '.modal__x--body'
+        modalBody: '.modal__x--body',
+        inputSubmit: '#signinSubmit'
     };
     return{
          userDetails: function(){
@@ -22,6 +23,7 @@ var ui = (function(){
 
 const ajax = (function(u){
     const allIdentifier = u.identifier();
+    let sumbitButton = document.querySelector(allIdentifier.inputSubmit);
     const handleEvents = function(){
         document.querySelector(allIdentifier.form).addEventListener('submit', startRequesting);
     }
@@ -29,6 +31,7 @@ const ajax = (function(u){
         let userEmail = document.querySelector(allIdentifier.email).value;
         let userPassword = document.querySelector(allIdentifier.passLabel).value;
         event.preventDefault();
+        sumbitButton.disabled = true;
         var credential = `email=${userEmail}&password=${userPassword}`;
 
         xhr = new XMLHttpRequest();
@@ -74,7 +77,7 @@ const ajax = (function(u){
                    }
                    
                  document.querySelector('.modal__x').style.display = 'none';
-                
+                 sumbitButton.disabled = false;
                  if (mg === 'success') {
                      let user = objMsg.wYuZrk;
                     sessionStorage.setItem('setlog', user);

@@ -486,7 +486,6 @@ button.button {
 	color: #fff;
 	backdrop-filter: blur( 20.0px );
 	-webkit-backdrop-filter: blur( 20.0px );
-   
 }
 
 .popup__xml--head {
