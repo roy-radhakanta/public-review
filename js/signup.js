@@ -42,7 +42,7 @@ function dataSendDb(e){
     xhr.open('POST', 'registration-form-process.php', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
-    xhr.send(sendData);
+    xhr.send(sendData); 
 };
 
 

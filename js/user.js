@@ -1,56 +1,88 @@
-const userUi = (function(){
-    const profileSelector = {
-        profileName: '.profile__name',
-        profileIntro: '.profile__intro'
-    }
+//check for the activation status if not activated redirect to profile page to complete the profile
+// -> take and store the user from session
+// -> make a ajax request for checking the user exits or not if exits then check for activation
+// -> if not activated redirect it to the profile update page
+// -> update the status and insert all the data to registered user table
+// -> table will contain the user id, profile image, description, linkedin profile github profile private / public toggle information user's activity -> post sent -> post review -> like -> dislike follower follow
+// -> if activated 
+//update the profile by updating the status and registered users list 
+//redirect to the feed page and show loggedin user's data
+//it will update profile page after activation
+//it will update profile privacy setting
+//show all activity and posts statistic to the user dashboard
+//likes dislikes comments..
+//notifications
 
-    return {
-        funcShowData: function(objectData){
-            document.querySelector(profileSelector.profileName).textContent = objectData.data.user_name;
-        }
-    };
+
+const uiModule = (function(){
+
 })();
 
-const requests = (function(){
-    let userDataObject = new Promise((resolve, reject)=>{
-        let xhr, user, data;
-        user = sessionStorage.getItem('setlog');
-        data = `userid=${user}`;
-        xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            let userIdentify = null;
-            try {
-               userIdentify = JSON.parse(xhr.responseText);
-               resolve(userIdentify);
-            } catch (error) {
-                userIdentify = error;
-                reject(userIdentify);
-            }
+const dataModule = (function(){
+        
+    let userActivationCheck = new Promise((resolve, reject) => {
+        let userSession = sessionStorage.getItem('setlog');
+        
+        let queryData;
+        if(userSession==null){
+            queryData = `usercheck=`;
+        }else{
+            queryData = `usercheck=${userSession}`;
         }
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function (){
+            let result = null;
+            try {
+                // result = JSON.parse(xhr.responseText);   
+                console.log(xhr.responseText);
+                resolve(result);
+            } catch (error) {
+                
+                reject(error);
+            }
+        };
         xhr.open('POST', 'user.php', true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send(data);
+        xhr.send(queryData);
     });
+
     return {
-        userObj: function(){
-            return userDataObject;
+        sessionStorage: function () {
+            return userSession;
+        },
+        ajaxRequest: function(){
+            return userActivationCheck;
         }
     }
 })();
 
-const userController = (function(ui, req){
-    
-   req.userObj().then(usr => {
-        ui.funcShowData(usr);
-    });
 
-    
+const controllerModule=(function(ui, data) {
 
-    // return {
-    //     init: function(){
-    //         return data;
-    //     }
-    // };  
-})(userUi, requests);
+    const controllEvents = function(){
+        setInterval(checkUserActivation, 5000);
+    }
 
-// userController.init();
+    const checkUserActivation = function(){
+        data.ajaxRequest().then(det=>{
+            // if(det.query === "true"){
+            //     redirect(det.query);
+            // }
+            console.log(det);
+        });    
+    }
+
+    const redirect = function(value){
+        if(value=='true'){
+            location.href = './profile.html';
+        }
+    }
+
+    return {
+        init: function(){
+            return controllEvents();
+        }
+    }
+})(uiModule, dataModule);
+
+controllerModule.init();

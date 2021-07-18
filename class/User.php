@@ -52,6 +52,21 @@ class User{
         }
     }
 
+    public static function userValidated($conn, $userid){
+        $sql = "SELECT * FROM user_registration WHERE email_address = :userid";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':userid', $userid, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $stmt->execute();
+        if($countExits = $stmt->rowCount()){
+            if($countExits > 0){
+                return  $userDetails = $stmt->fetch();
+            };
+        }
+    }
+
+
+
 }
 
 ?>
