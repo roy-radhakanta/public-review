@@ -10,7 +10,8 @@
 <body class="black-bg-body">
     <div class="container">
 
-        <!-- 
+    <!-- 
+            ------profile------
         image
         Name
         intro
@@ -18,33 +19,141 @@
         email
         linkedin profile
         github profile
+            ------privacy------
         private / public toggle information
         user's activity
             -> post sent
             -> post review
             -> like
             -> dislike
+
+            ------activity-----
         follower
         follow
         activate
         deactivate
-        delete account -->
+        delete account 
+    -->
 
 
-        <div class="feeds__showcase">
-            <div class="flex align-items-center profile__section  w-70 m-auto">
-                <div class="flex align-items-center user__details  w-100">
-                    <div class="profile__picture mr-small">
-                        <img src="img/user-default.webp" alt="">
-                    </div>
-                    <div class="profile__name-desc">
-                        <h5 class="white-text profile-name" id="profileName">Profile Name</h5>
-                        <p class="muted-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <div class="accordion">
+        <div class="accordion__wrapper w-70 m-auto">
+            <div class="accordion__heading flex align-items-center">
+                <a href="feed.html">  
+                    <div class="accordion__dropdown flex align-items-center justify-content-center mr-small">
+                        <img src="img/left-arrow.svg" alt="" class="dropdown-triger">
+                    </div>                
+                </a>
+                <h3 class="muted-text">user profile</h3>
+            </div>
+            <div class="accordion__body">
+                <div class="flex align-items-center profile__section  ">
+                    <div class="flex align-items-center user__details  w-100">
+                        <div class="profile__picture mr-small">
+                            <img src="img/user-default.webp" alt="">
+                        </div>
+                        <div class="profile__name-desc">
+                            <h5 class="white-text profile-name" id="profileName">Profile Name</h5>
+                            <p class="muted-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion__wrapper w-70 m-auto">
+            <div class="accordion__heading--border-bottom">
+                <h4 class="muted-text">links and privacy</h4>
+            </div>
+            <div class="accordion__body">
+                <div class="flex align-items-center profile__section--radius">
+                    <div class="flex align-items-center user__details  w-100">
+                        <div class="profile__picture mr-small w-100">
+                            <ul class="social__links">
+                                <li>
+                                    <a href="#">facebook.com/your-profile-name</a> 
+                                    <label class="switch">
+                                        <input type="checkbox" value="public" class="checkbox__switch">
+                                        <span class="slider__checkbox"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <a href="#">linkedin.com/your-profile-name</a>
+                                    <label class="switch">
+                                        <input type="checkbox" value="public" class="checkbox__switch">
+                                        <span class="slider__checkbox"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <a href="#">github.com/your-profile-name</a>
+                                    <label class="switch">
+                                        <input type="checkbox" value="public" class="checkbox__switch">
+                                        <span class="slider__checkbox"></span>
+                                    </label>
+                                </li>
+                                
+                                <li>
+                                    <a href="#" class="flex align-items-center">
+                                        <img src="img/plus-add.svg" alt="" class="icon__blubble">
+                                        <span>add new</span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion__wrapper w-70 m-auto">
+            <div class="accordion__heading--border-bottom">
+                <h4 class="muted-text">login and sequrity</h4>
+            </div>
+            <div class="accordion__body">
+                <div class="flex align-items-center profile__section--radius">
+                    <div class="flex align-items-center user__details  w-100">
+                        <div class="profile__picture mr-small w-100">
+                            <ul class="sequrity__measure">
+                                <li>
+                                    <a href="#"  class="flex align-items-center">
+                                        <span class="auth__bubbles"><img src="img/lock.svg" alt=""></span> 
+                                        <span>Change Password</span>
+                                    </a> 
+                                </li>
+                                <li>
+                                    <a href="#"  class="flex align-items-center">
+                                        <span class="auth__bubbles"><img src="img/two-factor-authetication.svg" alt=""></span> 
+                                        <span>Enable Two factor Authentication</span>
+                                    </a>
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+
+<script>
+
+    let checkBox = document.querySelectorAll('.checkbox__switch');
+    for(let check of checkBox){
+        check.addEventListener(('change'),()=>{
+            if(check.checked){
+                console.log(check.value);
+            }else{
+                console.log('private');
+            }
+        });
+    }
+    
+</script>
+       
 
     </div>
 </body>

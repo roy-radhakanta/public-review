@@ -20,12 +20,12 @@
 
             $allUserData = User::userValidated($conn, $useridx);
              if($allUserData->status==0){
-                $objcx = ['query' => 'true'];
+                $objcx = ['query' => 'true', 'user' => $allUserData];
              }else{
                 $objcx = ['query' => 'false'];
              }
 
-        echo json_encode($allUserData->status);
+        echo json_encode($objcx);
     }else{
         echo json_encode(['query' => 'false']);
     }

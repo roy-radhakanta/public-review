@@ -15,11 +15,16 @@
 
 
 const uiModule = (function(){
-
+    const profileIdentifier = {
+        profileName: '.profile-name',
+        
+    };
 })();
+
 
 const dataModule = (function(){
         
+    const dataBase = [];
     let userActivationCheck = new Promise((resolve, reject) => {
         let userSession = sessionStorage.getItem('setlog');
         
@@ -33,11 +38,10 @@ const dataModule = (function(){
         xhr.onload = function (){
             let result = null;
             try {
-                // result = JSON.parse(xhr.responseText);   
-                console.log(xhr.responseText);
+                result = JSON.parse(xhr.responseText);
+                dataBase.push(result);
                 resolve(result);
             } catch (error) {
-                
                 reject(error);
             }
         };
@@ -52,7 +56,11 @@ const dataModule = (function(){
         },
         ajaxRequest: function(){
             return userActivationCheck;
+        },
+        dataBase: function(){
+            return dataBase;
         }
+    
     }
 })();
 
@@ -60,15 +68,14 @@ const dataModule = (function(){
 const controllerModule=(function(ui, data) {
 
     const controllEvents = function(){
-        setInterval(checkUserActivation, 5000);
+        setInterval(checkUserActivation, 3000);
     }
 
     const checkUserActivation = function(){
         data.ajaxRequest().then(det=>{
-            // if(det.query === "true"){
-            //     redirect(det.query);
-            // }
-            console.log(det);
+            if(det.query === "true"){
+                redirect(det.query);
+            }
         });    
     }
 
