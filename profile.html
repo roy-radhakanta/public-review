@@ -52,12 +52,39 @@
                         <div class="profile__picture mr-small">
                             <img src="img/user-default.webp" alt="">
                         </div>
-                        <div class="profile__name-desc">
-                            <h5 class="white-text profile-name" id="profileName">Profile Name</h5>
-                            <p class="muted-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <div class="profile__name-desc w-100 flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="white-text profile-name" id="profileName">Profile Name</h5>
+                                <p class="muted-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                            <div>
+                                <a href="#" id="dropdownTriggerEdit" class="anchor muted-text dropdown-tooler">Edit</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+				<div class="profile__image--drop-zone">
+                    <form method="post">
+                    <div class="profile__image--upload">
+                        <input type="file" name="profileImage" class="profile__image--file" id="profileImage">
+						<div class="file__upload--sign">
+							<img src="img/drop-zone.png" class="folder-open">
+							<p class="text-thumb"> click or drag to upload file </p>
+						</div>
+                    </div>	
+					<div class="profile__details--edit">
+						<input type="text" class="first-name" name="firstname" placeholder="First Name">
+                        <input type="text" class="last-name" name="lastname" placeholder="Last Name">
+                        <textarea name="userdescription" id="" class="user-description"></textarea>
+					</div>
+                    <div class="profile__update--button">
+                        <div class="flex align-items-center justify-content-center">
+                            <button class="small-button bg-primary submit-button">Submit</button>
+                            <button class="small-button bg-yellow cancel-button">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                 </div>
             </div>
         </div>
     </div>
@@ -137,22 +164,28 @@
         </div>
     </div>
 
+    <div class="modal__x">
+        <div class="modal__x--body">
+           
+        </div>
+    </div>
 
+<script src="js/profile.js"></script>
 
-<script>
+<!-- <script> -->
 
-    let checkBox = document.querySelectorAll('.checkbox__switch');
-    for(let check of checkBox){
-        check.addEventListener(('change'),()=>{
-            if(check.checked){
-                console.log(check.value);
-            }else{
-                console.log('private');
-            }
-        });
-    }
+    <!-- let checkBox = document.querySelectorAll('.checkbox__switch'); -->
+    <!-- for(let check of checkBox){ -->
+        <!-- check.addEventListener(('change'),()=>{ -->
+            <!-- if(check.checked){ -->
+                <!-- console.log(check.value); -->
+            <!-- }else{ -->
+                <!-- console.log('private'); -->
+            <!-- } -->
+        <!-- }); -->
+    <!-- } -->
     
-</script>
+<!-- </script> -->
        
 
     </div>

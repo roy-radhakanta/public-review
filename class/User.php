@@ -1,5 +1,4 @@
 <?php
-
 class User{
     public $id;
     public $user_fullname;	
@@ -63,10 +62,7 @@ class User{
                 return  $userDetails = $stmt->fetch();
             };
         }
-    }
-
-
-
+    }	
 }
 
 ?>

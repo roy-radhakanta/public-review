@@ -14,26 +14,27 @@
 //notifications
 
 
+//ui
 const uiModule = (function(){
     const profileIdentifier = {
-        profileName: '.profile-name',
-        
+        profileName: '.profile-name'
     };
 })();
 
 
+//data
 const dataModule = (function(){
         
     const dataBase = [];
     let userActivationCheck = new Promise((resolve, reject) => {
         let userSession = sessionStorage.getItem('setlog');
-        
         let queryData;
         if(userSession==null){
             queryData = `usercheck=`;
         }else{
             queryData = `usercheck=${userSession}`;
         }
+		
         let xhr = new XMLHttpRequest();
         xhr.onload = function (){
             let result = null;
@@ -65,10 +66,13 @@ const dataModule = (function(){
 })();
 
 
+//Controller
 const controllerModule=(function(ui, data) {
 
-    const controllEvents = function(){
+    var controllEvents = function(){
+		
         setInterval(checkUserActivation, 3000);
+		
     }
 
     const checkUserActivation = function(){
@@ -84,6 +88,7 @@ const controllerModule=(function(ui, data) {
             location.href = './profile.html';
         }
     }
+
 
     return {
         init: function(){
