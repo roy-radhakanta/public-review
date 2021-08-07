@@ -31,6 +31,7 @@ const dataModule = (function(){
         let queryData;
         if(userSession==null){
             queryData = `usercheck=`;
+            location.href="index.html";
         }else{
             queryData = `usercheck=${userSession}`;
         }

@@ -14,7 +14,8 @@ const userInterFace = (function(){
 		textThumb: '.text-thumb',
 		profileSubmitButton: '.submit-button',
 		modalBody: '.modal__x--body',
-		modalX: '.modal__x'
+		modalX: '.modal__x',
+		sessionDataInput: '#toWhome'
 	};
 
 	const showError = function(errorArray){
@@ -78,17 +79,26 @@ const dataModel = (function(){
 	
 	const dataBase = {	
 		repo: [],
-		error: []
+		error: [],
+		session: 0
+	};
+
+	const sessionValueStore = function(){
+		let userSession = sessionStorage.getItem('setlog');
+		if(userSession !== null){
+			dataBase.session = userSession;
+		}
 	};
 
 	const ajaxHandle = function(objectUserData, formSelf){
-		let userSession = sessionStorage.getItem('setlog');
+		
 		// let formData = new FormData(formSelf);
 		// // formData.append('toWhome', userSession);
 		// formData.append('profileImage[]', objectUserData.profileImg);
 		// formData.append('firstname', objectUserData.firstName);
 		// formData.append('lastname', objectUserData.lastName);
 		// formData.append('description', objectUserData.userDescription);
+			
 
 		const dataToSend = `profileImage=${objectUserData.profileImg}&firstname=${objectUserData.firstName}&lastname=${objectUserData.lastName}&description=${objectUserData.userDescription}`;
 
@@ -116,7 +126,11 @@ const dataModel = (function(){
 		},
 		dataBase: function(){
 			return dataBase;
+		},
+		sessionControl: function(){
+			return sessionValueStore();
 		}
+
 	};
 })();
 
@@ -126,12 +140,14 @@ const dataModel = (function(){
 const controller = (function(ui, data){
 	var uiSelector, dropZone, dropInput;
 
+	//events
 	var allEventController = function(){
 		uiSelector = ui.selectorObject();
 		dropZone = document.querySelector(uiSelector.imgaeDropArea);
 		dropInput = document.querySelector(uiSelector.inputFile);
 		document.querySelector(uiSelector.editUserTrigger).addEventListener('click', controlEditPanel);
 		document.querySelector(uiSelector.cancelButton).addEventListener('click', cancel);
+		window.addEventListener('load', checkSession);
 		['dragenter', 'dragover'].forEach((currentEvent)=>{
 			dropZone.addEventListener(currentEvent, dragIndication);
 		});
@@ -139,9 +155,10 @@ const controller = (function(ui, data){
 			dropZone.addEventListener(currentEvent, resetDragActivity);
 		});
 		dropInput.addEventListener('drop', handleDroppedFile);
-		document.querySelector(uiSelector.profileSubmitButton).addEventListener('click', updateUserProfile);
+		dropInput.addEventListener('change', handleFileInput);
 	}
 	
+	//functions
 	const controlEditPanel = function(event){
 		event.preventDefault();
 		ui.toggleClass(uiSelector.profileDropZone, 'active');
@@ -160,6 +177,7 @@ const controller = (function(ui, data){
 		ui.removeClass(uiSelector.imgaeDropArea, "touched");		
 	};
 	
+	//drag file input
 	const handleDroppedFile = function(droppedEvent){
 		let fileReader = new FileReader();
 		const file = droppedEvent.dataTransfer.files[0];
@@ -174,20 +192,51 @@ const controller = (function(ui, data){
 			document.querySelector(uiSelector.textThumb).style.display = 'none';
 			document.querySelector(uiSelector.folderImg).src = fileReader.result;
 		}
-		console.log(droppedEvent.dataTransfer.files);
 		dropInput.files = droppedEvent.dataTransfer.files;
 		
 	}else{
 			ui.showErrorx(['Whoops!, wrong file type']);
 		}
 	}
+
+	//click file input
+	const handleFileInput = function(){
+		let fileReader = new FileReader();
+		const files = dropInput.files;
+		const file = files[0];
+		const fileNameCheck = file.name;
+		const fileSplitArr = fileNameCheck.split('.');
+				
+	if(fileSplitArr[1]==='png' || fileSplitArr[1]==='jpg'|| fileSplitArr[1]==='jpeg'){
+		fileReader.readAsDataURL(file);
+		fileReader.onload = ()=>{
+			document.querySelector(uiSelector.folderImg).style.width = '140px';
+			document.querySelector(uiSelector.folderImg).style.marginBottom = '0';
+			document.querySelector(uiSelector.textThumb).style.display = 'none';
+			document.querySelector(uiSelector.folderImg).src = fileReader.result;
+		}
+	}else{
+			ui.showErrorx(['Whoops!, wrong file type']);
+		}
+	}
 	
+
 	const updateUserProfile = function(event){
 		event.preventDefault();
 		const allProfileData = ui.profileInputData();
 		data.ajaxProfile(allProfileData, dropInput);
 	}
-		
+	
+	const checkSession = function(){
+		data.sessionControl();
+		const sessionData = data.dataBase();
+		if(sessionData.session){
+			document.querySelector(uiSelector.sessionDataInput).value = sessionData.session;
+		}else{
+			location.href="index.html";
+		}	
+	}
+
 	return {
 		init: function(){
 			allEventController();

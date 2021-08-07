@@ -64,9 +64,9 @@
                     </div>
                 </div>
 				<div class="profile__image--drop-zone">
-                    <form method="post">
+                    <form method="post" action="profile-data-updater.php" enctype="multipart/form-data">
                     <div class="profile__image--upload">
-                        <input type="file" name="profileImage" class="profile__image--file" id="profileImage">
+                        <input type="file" name="profileimage" class="profile__image--file" id="profileImage">
 						<div class="file__upload--sign">
 							<img src="img/drop-zone.png" class="folder-open">
 							<p class="text-thumb"> click or drag to upload file </p>
@@ -83,6 +83,7 @@
                             <button class="small-button bg-yellow cancel-button">Cancel</button>
                         </div>
                     </div>
+                    <input type="hidden" id="toWhome" name="toWhome" value="">
                 </form>
                  </div>
             </div>
