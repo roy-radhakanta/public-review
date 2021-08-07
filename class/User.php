@@ -8,6 +8,17 @@ class User{
     public $reg_date;
     public $status;
 
+    public $regi_id;
+    public $user_registration_id;
+    public $user_intro;
+    public $user_specilization;
+    public $profile_img;
+    public $linkedin_profile;
+    public $cariculam_profile;
+    public $specilization_show;
+    public $linkedin_profile_show;
+    public $cariculam_profile_show; 	
+
     public function registerUser($conn){
         $sql = "INSERT INTO user_registration(user_fullname, user_name, email_address, password, status) VALUES(:user, :pubname, :email, :password, :status)";
         $stmt = $conn->prepare($sql);
@@ -63,6 +74,43 @@ class User{
             };
         }
     }	
+
+    public static function updateOneColumnByOneCondition($conn, $table, $column_name, $value, $condition_column, $condition_match){
+        $sql = "UPDATE $table SET $column_name = :columnvalue WHERE $condition_column = :matchvalue";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':columnvalue', $value, PDO::PARAM_INT);
+        $stmt->bindValue(':matchvalue', $condition_match, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static function checkUserRegistered($conn, $userId){
+        $sql = "SELECT * FROM registered_users WHERE user_registration_id=:userid";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':userid', $userId, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $stmt->execute();
+        if($stmt->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateByRegisteredUserId($conn){
+        $sql = "UPDATE registered_users SET user_intro=:intro, profile_img=:profileimg WHERE user_registration_id=:user_registered";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':intro', $this->user_intro, PDO::PARAM_STR);
+        $stmt->bindValue(':profileimg', $this->profile_img, PDO::PARAM_STR);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        if($stmt->execute()){
+            return true;
+        }
+    }
 }
 
 ?>
