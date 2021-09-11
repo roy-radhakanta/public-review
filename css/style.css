@@ -590,7 +590,7 @@ textarea:focus-visible {
 .modal__x {
     display: none;
     position: fixed;
-    top: 2rem;
+    top: 4rem;
     right: 2rem;
     width: 20%
 }

@@ -62,17 +62,19 @@ class User{
         }
     }
 
-    public static function userValidated($conn, $userid){
-        $sql = "SELECT * FROM user_registration WHERE email_address = :userid";
+    public static function checkOneForExistanceByCondition($conn, $findIt, $from, $condition, $type){
+        $sql = "SELECT * FROM $from WHERE $condition = :findit";
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':userid', $userid, PDO::PARAM_STR);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $stmt->bindValue(':findit', $findIt, $type);
+    
         $stmt->execute();
-        if($countExits = $stmt->rowCount()){
+        $countExits=$stmt->rowCount();
+    
             if($countExits > 0){
-                return  $userDetails = $stmt->fetch();
-            };
-        }
+                return  true;
+            }else{
+                return false;
+            }
     }	
 
     public static function updateOneColumnByOneCondition($conn, $table, $column_name, $value, $condition_column, $condition_match){
@@ -101,12 +103,12 @@ class User{
         }
     }
 
-    public function updateByRegisteredUserId($conn){
+    public function updateByRegisteredUserId($conn, $regid){
         $sql = "UPDATE registered_users SET user_intro=:intro, profile_img=:profileimg WHERE user_registration_id=:user_registered";
         $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':user_registered', $this->user_registration_id, PDO::PARAM_INT);
         $stmt->bindValue(':intro', $this->user_intro, PDO::PARAM_STR);
         $stmt->bindValue(':profileimg', $this->profile_img, PDO::PARAM_STR);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
         if($stmt->execute()){
             return true;
         }

@@ -107,14 +107,14 @@ const dataModel = (function(){
 		ajax.onload = function(){
 			try {
 				const responseVal = JSON.parse(ajax.responseText);
-				console.log(responseVal);
+				// console.log(responseVal);
 				dataBase.repo.push(responseVal);
 			} catch(error){
 				dataBase.error.push(error);
 			}
 		}
 
-		ajax.open('POST', 'profile-data-updater.php', true);
+		ajax.open('POST', 'controller/profile-data-updater.php', true);
 		// ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		ajax.send(dataToSend);
 	};

@@ -39,6 +39,7 @@ const ajax = (function(u){
             let responseRes;
             responseRes = null;
             try{
+                console.log(xhr.responseText);
                 responseRes = JSON.parse(xhr.responseText);
             }
             catch(error){
@@ -47,7 +48,7 @@ const ajax = (function(u){
            
             handleResult(responseRes);
         }
-        xhr.open('POST', 'check-signin.php', true);
+        xhr.open('POST', 'controller/check-signin.php', true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         xhr.send(credential);

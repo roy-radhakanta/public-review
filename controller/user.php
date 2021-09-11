@@ -1,7 +1,7 @@
 <?php
-    include "include/config.php";
+    include "../include/config.php";
     if(isset($_POST['userid'])){
-        include "class/User.php";
+        include "../class/User.php";
         $userid = htmlspecialchars($_POST['userid']);
 
         if($userid !== ""){
@@ -15,7 +15,7 @@
     }
 
     if($_POST['usercheck']!=""){
-        include "class/User.php";
+        include "../class/User.php";
         $useridx = htmlspecialchars($_POST['usercheck']);
 
             $allUserData = User::userValidated($conn, $useridx);

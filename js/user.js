@@ -47,7 +47,7 @@ const dataModule = (function(){
                 reject(error);
             }
         };
-        xhr.open('POST', 'user.php', true);
+        xhr.open('POST', 'controller/user.php', true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(queryData);
     });

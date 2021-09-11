@@ -1,5 +1,5 @@
 <?php
-    include "include/config.php";
+    include "../include/config.php";
     $message = [];
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -17,7 +17,7 @@
         }
 
         if(!empty($_POST['fullname']) && !empty($_POST['publicname']) && !empty($_POST['email']) && !empty($_POST['password']) ){
-            include "class/User.php";
+            include "../class/User.php";
             $formAction = new User();
 
             $formAction->user_fullname = htmlspecialchars($_POST['fullname']);

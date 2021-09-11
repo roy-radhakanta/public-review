@@ -8,6 +8,111 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="black-bg-body">
+    <nav class="navigation">
+        <div class="container">
+            <div class="flex align-items-center">
+                <div class="navigation__logo">
+                    <a href="feed.html" class=" flex align-items-center"><img src="img/logo.png" alt=""></a>
+                </div>
+                <div class="navigation__links flex align-items-center">
+                    <div class="home__link">
+                        <a href="feed.html">
+                            <img src="img/home.png" alt="">
+                        </a>
+                        <div class="home__link--label">
+                            <p>home</p>
+                        </div>
+                    </div>
+                    <div class="home__link">
+                        <a href="feed.html">
+                            <img src="img/group.png" alt="">
+                        </a>
+                        <div class="home__link--label">
+                            <p>group</p>
+                        </div>
+                    </div>
+                    <div class="home__link">
+                        <a href="feed.html">
+                            <img src="img/notification.png" alt="">
+                        </a>
+                        <div class="home__link--label">
+                            <p>notification</p>
+                        </div>
+                    </div>
+                    <div class="home__link">
+                        <a href="feed.html">
+                            <img src="img/news.png" alt="">
+                        </a>
+                        <div class="home__link--label">
+                            <p>news</p>
+                        </div>
+                    </div>
+                    <div class="home__link">
+                        <a href="feed.html">
+                            <img src="img/research.png" alt="">
+                        </a>
+                        <div class="home__link--label">
+                            <p>research</p>
+                        </div>
+                    </div>
+                    <div class="home__search-bar">
+                        <form action="" >
+                            <div class="flex align-items-center search-bar__container">
+                                <span class="search__glass">
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="35" height="35" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                            <g>
+                                                <path d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" fill="#9f9fa0" data-original="#000000" style="" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                            <g>
+                                                <path d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" fill="#9f9fa0" data-original="#000000" style="" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                        </g>
+                                        </g></svg>
+                                </span>
+                                <input type="text" class="search-bar__input">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="home__room">
+                        <a href="#">&plus; create group</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="container">
 
     <!-- 
@@ -64,7 +169,7 @@
                     </div>
                 </div>
 				<div class="profile__image--drop-zone">
-                    <form method="post" action="profile-data-updater.php" enctype="multipart/form-data">
+                    <form method="post" action="controller/profile-data-updater.php" enctype="multipart/form-data">
                     <div class="profile__image--upload">
                         <input type="file" name="profileimage" class="profile__image--file" id="profileImage">
 						<div class="file__upload--sign">
@@ -167,7 +272,6 @@
 
     <div class="modal__x">
         <div class="modal__x--body">
-           
         </div>
     </div>
 
